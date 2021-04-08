@@ -3,7 +3,7 @@ SMPLicit: Topology-aware Generative Model for Clothed People
 
 [[Project]](http://www.iri.upc.edu/people/ecorona/smplicit/) [[arXiv]](https://arxiv.org/abs/2103.06871)<!-- TODO: Fitting SMPLicit -->
 
-<img src='http://www.iri.upc.edu/people/ecorona/smplicit/smplicit_gif1.gif' width=600  style="margin: -75px 0 0 -100px;">
+<img src='http://www.iri.upc.edu/people/ecorona/smplicit/teaser.png' width=800>
 
 ## License
 
