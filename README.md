@@ -11,20 +11,18 @@ Software Copyright License for non-commercial scientific research purposes. Plea
 
 ## Installation
 
+Follow these commands to install SMPLicit in your environment. The required libraries are standard, with the possible exception of Kaolin which requires a particular version to run with the current code. 
+
 - `git clone https://github.com/ecorona/SMPLicit`
 - `cd SMPLicit`
-- Install the dependencies listed in [requirements.txt](requirements.txt)
+- Install the dependencies listed in [requirements.txt](requirements.txt):
   - pip install -r requirements.txt
-- In particular, we use Kaolin v0.1 (see [installation command](https://kaolin.readthedocs.io/en/v0.1/notes/installation.html)) which should be easy to install. However, if you want to use a later version, you might need to update the import to TriangleMesh)
+- In particular, we use Kaolin v0.1 (see [installation command](https://kaolin.readthedocs.io/en/v0.1/notes/installation.html)) which should be easy to install. However, if you want to use a later version, you might need to update the import to TriangleMesh
 
 - Download the SMPL model from [here](https://drive.google.com/file/d/19plO4du6uXv8beTtEo0K3iYIyHu1YRHu/view?usp=sharing) and place it in SMPLicit/utils/
 
-## Install SMPLicit package
 
-To be able to import and use `ManoLayer` in another project, go to your `manopth` folder and run `pip install .`
-
-
-`cd /path/to/other/project`
+To be able to import and use `SMPLicit` in another project, just use run `python setup.py install` in the main folder.
 
 ## Usage 
 
