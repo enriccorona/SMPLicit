@@ -2,12 +2,15 @@ import torch
 import SMPLicit
 import trimesh
 import numpy as np
+import os
 
 SMPLicit_layer = SMPLicit.SMPLicit()
 
 iterations = 10
 
-cool_latent_reps = np.load('/home/enric/cvpr21/model/checkpoints/upperbody_combine_22sep_size126_biggershape_1_002_LRimageencoderX10_rate0.5_noisyZ100_withbetaaugmentation_11epochs/z_gaussians.npy')
+os.mkdir('../interpolation')
+cool_latent_reps = np.load('z_gaussians.npy')
+#cool_latent_reps = np.load('/home/enric/cvpr21/model/checkpoints/upperbody_combine_22sep_size126_biggershape_1_002_LRimageencoderX10_rate0.5_noisyZ100_withbetaaugmentation_11epochs/z_gaussians.npy')
 
 params_start = cool_latent_reps[0]
 params_end = cool_latent_reps[-1]

@@ -26,13 +26,23 @@ To be able to import and use `ManoLayer` in another project, go to your `manopth
 
 ## Usage 
 
-To check that everything is going well, run one of the test scripts under the examples folder.
+To check that everything is going well, run one of the test scripts under the examples folder. The first example will just show a simple T-Shirt on a standard shaped SMPL and visualize it using trimesh, to make sure everything is working.
 
 ```
 cd examples/
-python example.py # This will just show a simple T-Shirt on a standard shape SMPL and visualize it, to make sure everything is well set up
-python example_fullbody.py # This example will generate different cloth types on SMPL
-python interpolate.py # This example will generate object meshes that interpolate on upper-body clothes. These are saved in the interpolation folder
+python example.py
+```
+
+SMPLicit can represent clothes of different types, so the following example will also add lower-body clothes, hair and shoes into the example:
+
+```
+python example_fullbody.py
+```
+
+And finally one can interpolate between clothes of different types. For instance, moving between a jacket, tops, short or long sleeved T-Shirts. The following script will generate object meshes that represent these clothes and will be saved in interpolation/, below the main folder.
+
+```
+python interpolate.py
 ```
 
 ## Citation
