@@ -13,35 +13,35 @@ class SMPLicit(nn.Module):
         super(SMPLicit, self).__init__()
         _opt = Options().parse()
 
-        uppercloth = Model(_opt.path_checkpoints + _opt.upperbody_name + '/net_epoch_%s_id_%s.pth'%(_opt.upperbody_loadepoch, 'G'), 
+        uppercloth = Model(_opt.path_checkpoints + '/upperclothes.pth',
                                         _opt.upperbody_n_z_cut, 
                                         _opt.upperbody_n_z_style, _opt.upperbody_num_clusters, 
                                         _opt.path_cluster_files + _opt.upperbody_clusters, 
                                         _opt.upperbody_b_min, _opt.upperbody_b_max,
                                         _opt.upperbody_resolution, thresh=_opt.upperbody_thresh_occupancy)
 
-        pants = Model(_opt.path_checkpoints + _opt.pants_name + '/net_epoch_%s_id_%s.pth'%(_opt.pants_loadepoch, 'G'), 
+        pants = Model(_opt.path_checkpoints + '/pants.pth',
                                         _opt.pants_n_z_cut, 
                                         _opt.pants_n_z_style, _opt.pants_num_clusters, 
                                         _opt.path_cluster_files + _opt.pants_clusters, 
                                         _opt.pants_b_min, _opt.pants_b_max,
                                         _opt.pants_resolution, thresh=_opt.pants_thresh_occupancy)
 
-        skirts = Model(_opt.path_checkpoints + _opt.skirts_name + '/net_epoch_%s_id_%s.pth'%(_opt.skirts_loadepoch, 'G'), 
+        skirts = Model(_opt.path_checkpoints + '/skirts.pth',
                                         _opt.skirts_n_z_cut, 
                                         _opt.skirts_n_z_style, _opt.skirts_num_clusters, 
                                         _opt.path_cluster_files + _opt.skirts_clusters, 
                                         _opt.skirts_b_min, _opt.skirts_b_max,
                                         _opt.skirts_resolution, thresh=_opt.skirts_thresh_occupancy)
 
-        hair = Model(_opt.path_checkpoints + _opt.hair_name + '/net_epoch_%s_id_%s.pth'%(_opt.hair_loadepoch, 'G'), 
+        hair = Model(_opt.path_checkpoints + '/hair.pth',
                                         _opt.hair_n_z_cut, 
                                         _opt.hair_n_z_style, _opt.hair_num_clusters, 
                                         _opt.path_cluster_files + _opt.hair_clusters, 
                                         _opt.hair_b_min, _opt.hair_b_max,
                                         _opt.hair_resolution, thresh=_opt.hair_thresh_occupancy)
 
-        shoes = Model(_opt.path_checkpoints + _opt.shoes_name + '/net_epoch_%s_id_%s.pth'%(_opt.shoes_loadepoch, 'G'), 
+        shoes = Model(_opt.path_checkpoints + '/shoes.pth',
                                         _opt.shoes_n_z_cut, 
                                         _opt.shoes_n_z_style, _opt.shoes_num_clusters, 
                                         _opt.path_cluster_files + _opt.shoes_clusters, 
