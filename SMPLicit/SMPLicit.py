@@ -63,7 +63,6 @@ class SMPLicit(nn.Module):
         # This takes a lot of memory when finding the closest point in the SMPL so doing it by steps
         self.step = 1000 
 
-
     def reconstruct(self, model_ids=[0], Zs=[np.zeros(18)], pose=np.zeros(72), beta=np.zeros(10)):
         # Prepare tensors:
         for i in range(len(Zs)):
@@ -132,6 +131,7 @@ class SMPLicit(nn.Module):
         for i in range(iters):
             in_verts = torch.FloatTensor(mesh.vertices[i*step:(i+1)*step]).cuda()
             out_verts = self.SMPL_Layer.unpose_and_deform_cloth(in_verts, self.Astar_pose, pose, beta, J, v)
+            mesh.vertices[i*step:(i+1)*step] = out_verts.cpu().data.numpy()
 
         mesh = trimesh.smoothing.filter_laplacian(mesh, lamb=0.5)
         return mesh
