@@ -134,7 +134,7 @@ class SMPL(nn.Module):
             # Calculate closest SMPL N vertices for each vertex of the closest cloth mesh
             correspondance = []
             for i in range(neighbors):
-                new_corresponance = torch.argmin(dists, 2)
+                new_correspondance = torch.argmin(dists, 2)
                 dists[0, np.arange(dists.shape[1]), new_correspondance] += 100
                 correspondance.append(new_correspondance)
             correspondance = torch.stack(correspondance, -1)
