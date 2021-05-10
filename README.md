@@ -45,6 +45,10 @@ And finally one can interpolate between clothes of different types. For instance
 python interpolate.py
 ```
 
+## Fitting SMPLicit from a single image:
+
+We used another script that builds on SMPL estimation to find the cloth types that best fit the cloth semantic segmentation. Please refer to the README under `Fit_SMPLicit/`.
+
 ## Citation
 
 If you find the code useful, please cite: 

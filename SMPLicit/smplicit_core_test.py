@@ -66,11 +66,7 @@ class Model():
             dist = points[:, np.newaxis] - smpl_points[np.newaxis]
             dist = dist.reshape(1, len(points), -1)
 
-            if len(z_style) == 0:
-                pred = self._G(z_cut, dist)*-100
-            else:
-                pred = self._G(z_cut, z_style, dist)*-100
-            #pred = self._G(z_cut, z_style, dist)*-100
+            pred = self._G(z_cut, z_style, dist)*-100 # Distance was scaled during train to get more manageable range of values
             return pred.cpu().data.numpy()
 
         sdf = eval_grid_octree(coords, eval_func, threshold=0.01, num_samples=10000, init_resolution=16)

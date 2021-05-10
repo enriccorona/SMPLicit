@@ -79,9 +79,10 @@ class Options():
         # General options:
         # TODO Add high frequency model?
         #self._parser.add_argument('--path_checkpoints', type=str, default='/home/enric/cvpr21/model/checkpoints/')
-        self._parser.add_argument('--path_checkpoints', type=str, default='../checkpoints/')
-        self._parser.add_argument('--path_cluster_files', type=str, default='../clusters/')
-        self._parser.add_argument('--path_SMPL', type=str, default='utils/neutral_smpl_with_cocoplus_reg.txt')
+        path_SMPLicit = '/home/enric/cvpr21/SMPLicit/'
+        self._parser.add_argument('--path_checkpoints', type=str, default=path_SMPLicit + 'checkpoints/')
+        self._parser.add_argument('--path_cluster_files', type=str, default=path_SMPLicit + 'clusters/')
+        self._parser.add_argument('--path_SMPL', type=str, default=path_SMPLicit + 'SMPLicit/utils/neutral_smpl_with_cocoplus_reg.txt')
         #self._parser.add_argument('--path_SMPL', type=str, default='/media/enric/DATA/cvpr21/data_bcnet/BCNet/smpl_pytorch/model/neutral_smpl_with_cocoplus_reg.txt')
 
     def parse(self):

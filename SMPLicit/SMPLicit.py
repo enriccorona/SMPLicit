@@ -147,6 +147,6 @@ class SMPLicit(nn.Module):
         - pred: Signed distance predicted
         '''
 
-        pred = self.models[model_id].forward(z_cut, z_style, points)
+        pred = self.models[model_id]._G.forward(z_cut, z_style, points)
         return pred
 
