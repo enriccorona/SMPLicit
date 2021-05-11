@@ -36,6 +36,59 @@ class OptimizationSMPL(nn.Module):
     def forward(self):
         return self.pose*self.pose_factor, self.beta*self.beta_factor, self.trans*self.trans_factor
 
+def render_image_projection(input_image, posed_meshes, posed_normals, colors, camScale, camTrans, topleft, scale_ratio, mode='rgb', view='cam'):
+    renderer = meshRenderer()
+    renderer.setRenderMode('geo')
+    renderer.offscreenMode(True)
+
+    renderer.setWindowSize(input_image.shape[1], input_image.shape[0])
+    renderer.setBackgroundTexture(input_image)
+    renderer.setViewportSize(input_image.shape[1], input_image.shape[0])
+
+    # self.renderer.add_mesh(meshList[0]['ver'],meshList[0]['f'])
+    renderer.clear_mesh()
+    for mesh_index in range(len(colors)): #TODO: DO THIS FOR EVERYONE IN THE IMAGE:
+        vertices_2d = project_points(posed_meshes[mesh_index].vertices, camScale, camTrans, topleft, scale_ratio, input_image)
+        vertices_2d[:,0] -= input_image.shape[1]*0.5
+        vertices_2d[:,1] -= input_image.shape[0]*0.5
+        if mode == 'normals':
+            color = posed_normals[mesh_index]*0.5 + 0.5
+            fake_normals = np.zeros_like(posed_normals[mesh_index])
+            if view == 'cam':
+                fake_normals[:, 2] = -1
+            elif view == 'side':
+                fake_normals[:, 0] = -1
+
+            renderer.add_mesh(vertices_2d, posed_meshes[mesh_index].faces, fake_normals, color=color)
+            # TODO: CLEANER RENDER WOULD BE ALL NORMALS THE SAME (POINTING TOWARDS CAM) AND JUST CHANGING VERTEX COLOR ACCORDINGLY?
+            #renderer.add_mesh(vertices_2d, posed_meshes[mesh_index].faces,posed_normals[mesh_index])
+        elif mode == 'rgb':
+            renderer.add_mesh(vertices_2d, posed_meshes[mesh_index].faces, posed_normals[mesh_index], np.array(colors[mesh_index])[:3]/255.0)
+        elif mode == 'depth':
+            fake_normals = np.zeros_like(posed_meshes[mesh_index].vertices)
+            if view == 'cam':
+                fake_normals[:, 2] = -1
+            elif view == 'side':
+                fake_normals[:, 0] = -1
+            color = colors[mesh_index]
+            renderer.add_mesh(vertices_2d, posed_meshes[mesh_index].faces, fake_normals, color=color)
+        else:
+            print(mode)
+            raise('unknown projection mode')
+
+        #renderer.add_mesh(vertices_2d, posed_meshes[mesh_index].faces, posed_normals[mesh_index])#, np.array(colors[mesh_index])[:3]/255.0)
+
+    if view=='cam':
+        renderer.showBackground(True)
+    else:
+        renderer.showBackground(False)
+    renderer.setWorldCenterBySceneCenter()
+    renderer.setCameraViewMode(view)
+
+    renderer.display()
+    renderImg = renderer.get_screen_color_ibgr()
+    return renderImg
+
 def render_image_projection_multiperson_wrenderer(input_image, posed_meshes, posed_normals, colors, camScale, camTrans, topleft, scale_ratio, mode='rgb', view='cam', renderer=None):
     #renderer = meshRenderer()
     renderer.setRenderMode('geo')
