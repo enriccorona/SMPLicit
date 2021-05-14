@@ -13,7 +13,7 @@ Software Copyright License for non-commercial scientific research purposes. Plea
 
 Follow these commands to install SMPLicit in your environment. The required libraries are standard, with the possible exception of Kaolin which requires a particular version to run with the current code. 
 
-- `git clone https://github.com/ecorona/SMPLicit`
+- `git clone https://github.com/enriccorona/SMPLicit`
 - `cd SMPLicit`
 - Install the dependencies listed in [requirements.txt](requirements.txt):
   - pip install -r requirements.txt
