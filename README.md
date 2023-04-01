@@ -19,7 +19,7 @@ Follow these commands to install SMPLicit in your environment. The required libr
   - pip install -r requirements.txt
 - In particular, we use Kaolin v0.1 (see [installation command](https://kaolin.readthedocs.io/en/v0.1/notes/installation.html)) which should be easy to install. However, if you want to use a later version, you might need to update the import to TriangleMesh in `SMPLicit/SMPLicit.py`
 
-- Download the SMPL model from [here](https://drive.google.com/file/d/19plO4du6uXv8beTtEo0K3iYIyHu1YRHu/view?usp=sharing) and place it in SMPLicit/utils/
+- Download the SMPL model from [here](https://drive.google.com/file/d/1HsUW8jPfU6kHowRDHcURdwXskFbIIMet/view?usp=sharing) and place it in SMPLicit/utils/
 
 
 To be able to import and use `SMPLicit` in another project, just use run `python setup.py install` in the main folder.
